@@ -1,5 +1,7 @@
 // Package declaration
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 const DEBUG = false;
 
@@ -47,23 +49,24 @@ const questions = [
     },
     {
         type: "list",
-        name: "licence",
-        message: "Please enter a description of the project: ",
+        name: "license",
+        message: "Please select the project's license: ",
         choices: ["No license", "Apache 2.0 License", "BSD 2-Clause License",
             "BSD 3-Clause License", "Eclipse Public License", "MIT License"]
     }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
 
-// TODO: Create a function to initialize app
+}
+
+// Initialise app: get information from Inquirer, generate the markdown, write to file
 function init() {
     // 
     inquirer.prompt(questions)
     .then(answers => {
         const markdown = generateMarkdown(answers);
-        console.log(markdown);
     })
     .catch(error => {})
     
