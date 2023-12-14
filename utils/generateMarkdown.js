@@ -42,20 +42,49 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
     return `![${license} license badge](${renderLicenseBadge(license)})
-    This project is licensed under the ${license}.
-    Please view license information and terms at ${renderLicenseLink(license)}`;
+This project is licensed under the ${license}.
+Please view license information and terms at ${renderLicenseLink(license)}`;
+}
+
+function renderTableOfContents(data) {
+    return ``;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
+## Description
+${data.description}
+
+## Table of Contents
+${renderTableOfContents(data)}
+
+${data.install ? `## Installation\n${data.install}` : ``}
+
+${data.usage ? `## Usage\n${data.usage}` : ``}
+
+${data.tests ? `## Testing\n${data.tests}` : ``}
+
+${data.contribution ? `## Contributions\n${data.contribution}` : ``}
+
+## Contacts
+The project owner can be contacted via the following:
+- GitHub: github.com/${data.github_username}
+- Email: ${data.email_address}
+
+## License
+${renderLicenseSection(data.license)}
 `;
 }
+//title
+//description
+//table of contents
+//install
+//usage
+//contributions
+//tests
+//queries
+//license
 
 module.exports = generateMarkdown;
-
-// LIST OF LICENSES:
-/* mit yellow
-    no licence;
-*/

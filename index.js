@@ -27,7 +27,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "installation",
+        name: "install",
         message: "Please enter the project's installation instructions: "
     },
     {
@@ -37,20 +37,19 @@ const questions = [
     },
     {
         type: "input",
-        name: "contribution",
-        message: "Please enter the contribution guidelines for the project: "
-    },
-    {
-        type: "input",
         name: "tests",
         message: "Please enter the project's testing instructions: "
     },
     {
-        // TODO get list of licences
+        type: "input",
+        name: "contribution",
+        message: "Please enter the contribution guidelines for the project: "
+    },
+    {
         type: "list",
         name: "licence",
         message: "Please enter a description of the project: ",
-        choices: ["Apache 2.0 License", "BSD 2-Clause License",
+        choices: ["No license", "Apache 2.0 License", "BSD 2-Clause License",
             "BSD 3-Clause License", "Eclipse Public License", "MIT License"]
     }
 ];
@@ -62,7 +61,10 @@ function writeToFile(fileName, data) {}
 function init() {
     // 
     inquirer.prompt(questions)
-    .then(answers => {})
+    .then(answers => {
+        const markdown = generateMarkdown(answers);
+        console.log(markdown);
+    })
     .catch(error => {})
     
 }
