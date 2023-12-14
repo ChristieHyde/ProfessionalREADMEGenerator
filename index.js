@@ -50,7 +50,8 @@ const questions = [
         type: "list",
         name: "licence",
         message: "Please enter a description of the project: ",
-        choices: ["a", "b"]
+        choices: ["Apache 2.0 License", "BSD 2-Clause License",
+            "BSD 3-Clause License", "Eclipse Public License", "MIT License"]
     }
 ];
 
